@@ -3,9 +3,20 @@ import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 
+interface Posts {
+  userId: number
+  id: number
+  title: string
+  body: string
+}
+
+type PostsResponse = Posts
+
 // ビルド時にgetStaticProps()によってpropsが作成される
 // コンポーネントはpropsのキー(ここではposts)を受け取る
-export default function Home({ posts }) {
+
+// TODO:型付け
+function Home({ posts }: Promise<PostsResponse>) {
   return (
     <Layout home>
       <Head>
@@ -40,3 +51,5 @@ export async function getStaticProps() {
   const posts = await res.json()
   return { props: { posts } }
 }
+
+export default Home

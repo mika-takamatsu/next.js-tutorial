@@ -6,7 +6,12 @@ import Link from 'next/link'
 const name = 'takamatsu'
 export const siteTitle = 'Next.js Sample website'
 
-export default function Layout({ children, home }) {
+type Props = {
+  children?: React.ReactNode;
+  home?: boolean;
+}
+
+export default function Layout({ children, home }: Props) {
   return (
     <div className={styles.container}>
       <Head>

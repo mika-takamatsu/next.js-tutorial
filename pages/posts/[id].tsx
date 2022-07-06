@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import Layout from '../../components/layout'
 
-
-export default function Post({ post }) {
+// TODO:型付け
+function Post({ post }) {
   return (
     <Layout>
     <Head>
@@ -30,6 +30,7 @@ export async function getStaticPaths() {
   }
 }
 
+// TODO:型付け
 export async function getStaticProps({ params }) {
   const id = params.id // URLのパラメータから id を取得する
 
@@ -39,3 +40,5 @@ export async function getStaticProps({ params }) {
     props: { post }
   }
 }
+
+export default Post
