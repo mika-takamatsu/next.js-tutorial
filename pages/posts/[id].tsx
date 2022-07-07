@@ -17,15 +17,14 @@ type Params = {
   id: string
 }
 
-const Post: NextPage<Props> = ({ post }) => {
-  const {id, title, body} = post
+const Post: NextPage<Props> = ( {post} ) => {
   return (
     <Layout>
     <Head>
-      <title>#{id}</title>
+      <title>#{post.id}</title>
     </Head>
-    <h1>{title}</h1>
-    <p>{body}</p>
+    <h1>{post.title}</h1>
+    <p>{post.body}</p>
   </Layout>
 
   )
@@ -52,7 +51,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
   const post = await res.json()
   return {
-    props: { post }
+    props: { post } 
   }
 }
 
