@@ -13,10 +13,6 @@ type Props = {
   post: Post
 }
 
-type Params = {
-  id: string
-}
-
 const Post: NextPage<Props> = ( {post} ) => {
   return (
     <Layout>
