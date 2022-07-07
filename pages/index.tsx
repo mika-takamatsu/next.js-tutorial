@@ -2,21 +2,21 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
+import type { NextPage, GetStaticProps } from 'next'
 
-interface Posts {
+type Post = {
   userId: number
   id: number
   title: string
   body: string
 }
 
-type PostsResponse = Posts
+type HomeProps = {
+  posts: Post[]
+}
 
 // ビルド時にgetStaticProps()によってpropsが作成される
-// コンポーネントはpropsのキー(ここではposts)を受け取る
-
-// TODO:型付け
-function Home({ posts }: Promise<PostsResponse>) {
+const Home: NextPage<HomeProps> = ({ posts }) => {
   return (
     <Layout home>
       <Head>
@@ -46,7 +46,7 @@ function Home({ posts }: Promise<PostsResponse>) {
 }
 
 // SSG(Static Generation):HTMLの生成が一度だけ行われ、ページリクエストのたびに再利用される
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
   const posts = await res.json()
   return { props: { posts } }

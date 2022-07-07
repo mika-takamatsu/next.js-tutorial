@@ -1,25 +1,41 @@
-import Head from 'next/head';
+import Head from 'next/head'
 import Layout from '../../components/layout'
+import type { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 
-// TODO:型付け
-function Post({ post }) {
+type Post = {
+  userId: number
+  id: number
+  title: string
+  body: string
+}
+
+type Props = {
+  post: Post
+}
+
+type Params = {
+  id: string
+}
+
+const Post: NextPage<Props> = ({ post }) => {
+  const {id, title, body} = post
   return (
     <Layout>
     <Head>
-      <title>#{post.id}</title>
+      <title>#{id}</title>
     </Head>
-    <h1>{post.title}</h1>
-    <p>{post.body}</p>
+    <h1>{title}</h1>
+    <p>{body}</p>
   </Layout>
 
   )
 }
 
 // 事前生成するページのパス(/posts/[id])を設定する
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
   const posts = await res.json()
-  const paths = posts.map(post => `/posts/${post.id}`)
+  const paths = posts.map((post: Post) => `/posts/${post.id}`)
   return { 
     paths, 
     fallback: false 
@@ -30,9 +46,8 @@ export async function getStaticPaths() {
   }
 }
 
-// TODO:型付け
-export async function getStaticProps({ params }) {
-  const id = params.id // URLのパラメータから id を取得する
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const id = params!.id // URLのパラメータから id(空の場合あり) を取得する
 
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
   const post = await res.json()

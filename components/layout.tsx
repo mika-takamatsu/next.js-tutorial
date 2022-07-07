@@ -6,12 +6,12 @@ import Link from 'next/link'
 const name = 'takamatsu'
 export const siteTitle = 'Next.js Sample website'
 
-type Props = {
-  children?: React.ReactNode;
-  home?: boolean;
+type LayoutProps = {
+  children?: React.ReactNode
+  home?: boolean
 }
 
-export default function Layout({ children, home }: Props) {
+const Layout = ({ children, home }: LayoutProps) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -69,3 +69,5 @@ export default function Layout({ children, home }: Props) {
     </div>
   )
 }
+
+export default Layout
