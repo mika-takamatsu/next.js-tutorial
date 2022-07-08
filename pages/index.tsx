@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
 import type { NextPage, GetStaticProps } from 'next'
 
 type Post = {
@@ -23,12 +22,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
         <title>{siteTitle}</title>
       </Head>
 
-      <section className={utilStyles.headingMd}>
-        <p>test用</p>
-      </section>
-
       <main>
-        <h1>記事一覧</h1>
         <ul>
           {posts.map((post)=>{
             return(

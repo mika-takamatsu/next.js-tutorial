@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import Header from './header'
 
 const name = 'takamatsu'
 export const siteTitle = 'Next.js Sample website'
@@ -13,7 +14,7 @@ type LayoutProps = {
 
 const Layout = ({ children, home }: LayoutProps) => {
   return (
-    <div className={styles.container}>
+    <Header>
       <Head>
         <link rel="icon" href="favicon.ico" />
         <meta
@@ -29,6 +30,7 @@ const Layout = ({ children, home }: LayoutProps) => {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+    <div className={styles.container}>
       <header className={styles.header}>
         {home ? (
           <>
@@ -67,6 +69,7 @@ const Layout = ({ children, home }: LayoutProps) => {
         </div>
       )}
     </div>
+    </Header>
   )
 }
 
