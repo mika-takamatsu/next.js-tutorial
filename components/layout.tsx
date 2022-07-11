@@ -14,6 +14,7 @@ type LayoutProps = {
 
 const Layout = ({ children, home }: LayoutProps) => {
   return (
+  <>
     <Header>
       <Head>
         <link rel="icon" href="favicon.ico" />
@@ -30,9 +31,10 @@ const Layout = ({ children, home }: LayoutProps) => {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
+    </Header>
     <div className={styles.container}>
       <header className={styles.header}>
-        {home ? (
+        {home && (
           <>
             <img
               src="/images/profile.jpg"
@@ -40,23 +42,6 @@ const Layout = ({ children, home }: LayoutProps) => {
               alt={name}
             />
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <img
-                  src="/images/profile.jpg"
-                  className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2 className={utilStyles.headingLg}>
-              <Link href="/">
-                <a className={utilStyles.colorInherit}>{name}</a>
-              </Link>
-            </h2>
           </>
         )}
       </header>
@@ -69,7 +54,7 @@ const Layout = ({ children, home }: LayoutProps) => {
         </div>
       )}
     </div>
-    </Header>
+  </>
   )
 }
 
