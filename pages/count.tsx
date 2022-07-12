@@ -1,7 +1,7 @@
-import Head from "next/head";
-import Layout from "../components/layout";
-import React, { useState } from "react";
 import { Button } from "@mui/material";
+import Head from "next/head";
+import React, { useState } from "react";
+import Layout from "../components/layout";
 
 const Count = () => {
   const [count, setCount] = useState(0);
