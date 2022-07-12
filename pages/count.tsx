@@ -1,23 +1,22 @@
-import Head from 'next/head'
-import Layout from "../components/layout"
-import React, { useState } from 'react'
-import { Button } from '@mui/material'
+import Head from "next/head";
+import Layout from "../components/layout";
+import React, { useState } from "react";
+import { Button } from "@mui/material";
 
 const Count = () => {
-
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   const onIncrement = () => {
-    setCount(count + 1)
-  }
+    setCount(count + 1);
+  };
 
   const onDecrement = () => {
-    setCount(count - 1)
-  }
+    setCount(count - 1);
+  };
 
   const onInitial = () => {
-    setCount(0)
-  }
+    setCount(0);
+  };
 
   return (
     <Layout>
@@ -31,7 +30,7 @@ const Count = () => {
         <Button onClick={onInitial}>初期化</Button>
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Count
+export default Count;

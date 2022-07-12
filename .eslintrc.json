@@ -1,8 +1,16 @@
 {
-  "extends": "next/core-web-vitals", 
-
-  // <img>使用のため
+  "root": true,
+  "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
-    "@next/next/no-img-element": "off"
+    "@next/next/no-img-element": "off", // <img>使用のため
+    "no-console": "error",
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ]
   }
 }
