@@ -38,7 +38,7 @@
       "prettier --write"
     ],
     "*.{css,less,sass,scss}": [
-      "lint --fix"
+      "eslint"
     ]
   }
 }
