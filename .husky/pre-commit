@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# コミット前に実行するコマンド
+# 以下が通らないとコミット不可
 yarn lint-staged
